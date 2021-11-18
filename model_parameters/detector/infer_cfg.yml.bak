@@ -1,0 +1,47 @@
+use_python_inference: false
+mode: fluid
+draw_threshold: 0.5
+metric: COCO
+arch: RCNN
+min_subgraph_size: 40
+with_background: true
+Preprocess:
+- is_channel_first: false
+  is_scale: true
+  mean:
+  - 0.4
+  - 0.422
+  - 0.438
+  std:
+  - 0.199
+  - 0.211
+  - 0.221
+  type: Normalize
+- interp: 1
+  max_size: 1280
+  resize_box: false
+  target_size: 1024
+  type: Resize
+  use_cv2: true
+- channel_first: true
+  to_bgr: false
+  type: Permute
+- stride: 32
+  type: PadStride
+label_list:
+- QY
+- PP
+- BB
+- FC
+- QJ
+- BM
+- QB
+- HH
+- ZK
+- LZ
+- DM
+- LW
+- SD
+- RD
+- LX
+- background
